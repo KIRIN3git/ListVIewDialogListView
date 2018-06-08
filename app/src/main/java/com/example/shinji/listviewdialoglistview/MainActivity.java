@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
         */
 
-		//////////////// トレーナーリスト用
+		// 〇トレーナーリスト用
 		ArrayList<Trainer> trainers = new ArrayList<>();
 
 		int[] icons = {
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-		//////////////// モンスターリスト用
+		// 〇モンスターリスト用
 		mPokemonListView = new ListView(this);
 
 		// データを準備
@@ -117,12 +117,11 @@ public class MainActivity extends AppCompatActivity {
 			Log.w( "DEBUG_DATA", "names[i] = " + names[i] );
 			Log.w( "DEBUG_DATA", "comments[i] = " + comments[i] );
 		}
-		PokemonAdapter poke_adapter = new PokemonAdapter(this, 0, pokemons);
+		PokemonAdapter poke_adapter = new PokemonAdapter(this, android.R.layout.simple_list_item_single_choice, pokemons); // ☆simple_list_item_single_choiceを設定
 		mPokemonListView.setAdapter(poke_adapter);
+		mPokemonListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
-
-
-		// トレーナーリストビューのクリックイベントを取得
+		// 〇 トレーナーリストビューのクリックイベントを取得
 		mTrainerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			Log.d("DEBUG_DATA", "onItemClick");
@@ -156,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		// ポケモンリストビューのクリックイベントを取得
+		// 〇 ポケモンリストビューのクリックイベントを取得
 		mPokemonListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Log.d("DEBUG_DATA", "onItemClick");
@@ -168,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 	}
 
-	// ・トレイナーアダプター
+	// 〇 トレイナーアダプター
 	public class TrainerAdapter extends ArrayAdapter<Trainer> {
 
 		private LayoutInflater layoutInflater;
@@ -202,7 +201,8 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
-	// ・ポケモンアダプター
+	////////////////
+	/// ・ポケモンアダプター
 	public class PokemonAdapter extends ArrayAdapter<Pokemon> {
 
 		private LayoutInflater layoutInflater;
